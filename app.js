@@ -222,7 +222,7 @@ function renderCart() {
                     <span class="quantity-display">${item.quantity}</span>
                     <button class="quantity-btn increase-btn">+</button>
                 </div>
-                <p class="cart-item-price">${item.price * item.quantity} руб.</p>
+                <p class="cart-item-price">${item.price * item.quantity} тг.</p>
                 <button class="remove-btn">✖</button>
             </div>
         `;
