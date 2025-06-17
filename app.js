@@ -215,7 +215,7 @@ function renderCart() {
                 <div class="cart-item-info">
                     <h3>${item.name}</h3>
                     <p>Размер: ${item.size}</p>
-                    <p>Цена: ${item.price} руб.</p>
+                    <p>Цена: ${item.price} тг.</p>
                 </div>
                 <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn">-</button>
@@ -233,7 +233,7 @@ function renderCart() {
             ${cartItemsHTML}
         </div>
         <div class="cart-summary">
-            <h2>Итого: ${total} руб.</h2>
+            <h2>Итого: ${total} тг.</h2>
             <div class="cart-actions">
                 <a href="catalog.html" class="btn btn-secondary">Посмотреть еще что-нибудь</a>
                 <a href="checkout.html" class="btn">Оформить заказ</a>
