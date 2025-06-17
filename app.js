@@ -84,7 +84,7 @@ function renderProductDetails() {
         </div>
         <div class="product-details">
             <h1>${product.name}</h1>
-            <p class="product-price">${product.price} руб.</p>
+            <p class="product-price">${product.price} тг.</p>
             <p class="product-description">${product.description}</p>
             <div class="form-group">
                 <label for="size-select">Выберите размер:</label>
