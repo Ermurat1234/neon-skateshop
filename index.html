@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON SKATE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">NEON SKATE</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html" class="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main>
+        <div class="hero-section">
+            <div class="container">
+                <h1 class="main-title">NEON SKATE</h1>
+                <p class="subtitle">Твой стиль. Твоя скорость. Твоя ночь.</p>
+            </div>
+        </div>
+
+        <div class="categories-section">
+            <div class="container">
+                <div class="category-grid">
+                    <!-- Категория: Скейты -->
+                    <div class="category-card">
+                        <img src="https://placehold.co/1600x900/1a1a1a/ff003c?text=Скейтборды" alt="Изображение скейтбордов">
+                        <div class="category-overlay">
+                            <h2>Скейтборды</h2>
+                            <a href="catalog.html#skates" class="btn">Перейти к товарам</a>
+                        </div>
+                    </div>
+                    <!-- Категория: Одежда -->
+                    <div class="category-card">
+                        <img src="https://placehold.co/1600x900/1a1a1a/ff003c?text=Одежда" alt="Изображение одежды">
+                        <div class="category-overlay">
+                            <h2>Одежда</h2>
+                            <a href="catalog.html#clothing" class="btn">Перейти к товарам</a>
+                        </div>
+                    </div>
+                    <!-- Категория: Детали -->
+                    <div class="category-card">
+                        <img src="https://placehold.co/1600x900/1a1a1a/ff003c?text=Детали" alt="Изображение деталей для скейта">
+                        <div class="category-overlay">
+                            <h2>Детали</h2>
+                            <a href="catalog.html#parts" class="btn">Перейти к товарам</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NEON SKATE. Все права защищены.</p>
+            <p>Сайт является учебным проектом.</p>
+        </div>
+    </footer>
+    
+    <!-- Скрипт для обновления счетчика корзины -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-counter').textContent = totalQuantity;
+        });
+    </script>
+</body>
+</html>

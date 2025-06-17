@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница товара - NEON SKATE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">NEON SKATE</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html" class="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-page">
+            <div class="container">
+                <div class="product-container" id="product-details-container">
+                    <!-- Детали товара будут загружены сюда -->
+                </div>
+                
+                <section class="reviews-section">
+                    <h2>Отзывы</h2>
+                    <div id="reviews-list">
+                       <!-- Отзывы будут загружены сюда -->
+                    </div>
+                    <div class="add-review-section">
+                         <button class="btn" id="add-review-btn">Добавить свой отзыв</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно для сообщения -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <p>Чтобы оставить отзыв, вы должны сначала приобрести этот товар.</p>
+            <button class="close-btn">Понятно</button>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NEON SKATE. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductDetails();
+            updateCartCounter();
+
+            const modal = document.getElementById('review-modal');
+            const addReviewBtn = document.getElementById('add-review-btn');
+            const closeBtn = document.querySelector('.close-btn');
+
+            addReviewBtn.onclick = () => {
+                modal.style.display = 'block';
+            }
+            closeBtn.onclick = () => {
+                modal.style.display = 'none';
+            }
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

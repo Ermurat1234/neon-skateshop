@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа - NEON SKATE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">NEON SKATE</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html" class="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Оформление заказа</h1>
+        </div>
+        <div class="container">
+            <!-- ВАЖНО: Замените 'YOUR_FORM_ID' на ваш реальный ID с сайта Formspree.io -->
+            <form action="https://formspree.io/f/xovwlvlv" method="POST" class="checkout-form" id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Полное имя</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Адрес доставки</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Комментарии к заказу</label>
+                    <textarea id="comments" name="comments" rows="4" style="width: calc(100% - 1.6rem); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background-color: #2a2a2a; color: var(--primary-text-color); font-size: 1rem;"></textarea>
+                </div>
+                
+                <!-- Скрытое поле для данных о заказе -->
+                <input type="hidden" name="order_details" id="order_details">
+                <input type="hidden" name="total_price" id="total_price">
+
+                <button type="submit" class="btn" style="width: 100%; opacity: 1; transform: none; padding: 1rem; font-size: 1.2rem;">Отправить заказ</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NEON SKATE. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCounter();
+            // Заполняем скрытые поля формы данными из корзины
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                let orderDetails = '';
+                let totalPrice = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    orderDetails += `${item.name} (Размер: ${item.size}) - ${item.quantity} шт. x ${item.price} руб. = ${itemTotal} руб.\n`;
+                    totalPrice += itemTotal;
+                });
+                document.getElementById('order_details').value = orderDetails;
+                document.getElementById('total_price').value = `Итоговая сумма: ${totalPrice} руб.`;
+            }
+        });
+
+        // Очистка корзины после успешной отправки
+        document.getElementById('checkout-form').addEventListener('submit', function() {
+            setTimeout(() => { // Небольшая задержка, чтобы форма успела отправиться
+                localStorage.removeItem('cart');
+                window.location.href = 'thankyou.html'; // Перенаправление на страницу благодарности
+            }, 500);
+        });
+    </script>
+</body>
+</html>
